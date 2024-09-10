@@ -5,14 +5,14 @@ import { useLocation } from "react-router";
 const YourItems = () => {
     const location = useLocation();
     const [items, setItems] = useState([]);
-    const vendorId = location.state.data._id;
+    const vendorId = location?.state?.data?._id;
 
     const fetchItems = async () => {
         try {
             const resp = await axios.get(
                 `http://localhost:5000/vendor/yourItem/${vendorId}`
             );
-            setItems(resp.data.items); 
+            setItems(resp.data.items);
         } catch (error) {
             console.error("Error fetching items:", error);
         }

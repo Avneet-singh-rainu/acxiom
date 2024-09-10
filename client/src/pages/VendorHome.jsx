@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from "react-router";
 const VendorHome = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const vendorName = location.state.data.user.userId;
-    const user = location.state.data.user;
+    const vendorName = location?.state?.data?.user?.userId;
+    const user = location?.state?.data?.user;
 
     return (
         <div className="w-full h-full flex justify-center items-center">
