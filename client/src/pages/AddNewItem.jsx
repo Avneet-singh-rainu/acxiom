@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const AddNewItem = () => {
     const [productName, setProductName] = useState("");
@@ -9,7 +9,7 @@ const AddNewItem = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const vid = location.state.data._id;
+    const vid = location?.state?.data?._id || localStorage.getItem("vendor");
 
     // Function to handle form submission
     const handleSubmit = async (e) => {
@@ -40,7 +40,7 @@ const AddNewItem = () => {
         <div className="w-full flex flex-col items-center">
             {/* Buttons Section */}
             <div className="flex justify-center gap-9 mb-8">
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
+                {/* <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
                     Product Status
                 </button>
                 <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
@@ -48,8 +48,15 @@ const AddNewItem = () => {
                 </button>
                 <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
                     View Product
-                </button>
-                <button className="px-4 py-2 bg-red-500 text-white rounded-md">
+                </button> */}
+                <button
+                    className="px-4 py-2 bg-red-500 text-white rounded-md"
+                    onClick={() => {
+                        localStorage.removeItem("vendor");
+                        localStorage.removeItem("vendorName");
+                        navigate("/");
+                    }}
+                >
                     LogOut
                 </button>
             </div>

@@ -63,4 +63,38 @@ router.get("/item/:vendor", async (req, res) => {
     res.status(200).json({ items: items });
 });
 
+//-----------------------------------------------------
+
+// Get all vendors
+router.get("/vendors", async (req, res) => {
+    try {
+        const vendors = await Vendor.find({});
+        res.status(200).json(vendors);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching vendors" });
+    }
+});
+
+// Add a new vendor
+router.post("/add", async (req, res) => {
+    try {
+        const newVendor = new Vendor(req.body);
+        await newVendor.save();
+        res.status(201).json(newVendor);
+    } catch (error) {
+        res.status(500).json({ message: "Error adding vendor" });
+    }
+});
+
+// Delete a vendor by name
+router.delete("/vendors/:vendorName", async (req, res) => {
+    try {
+        const { vendor } = req.params;
+        await Vendor.findOneAndDelete({ vendor });
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting vendor" });
+    }
+});
+
 module.exports = router;

@@ -65,13 +65,19 @@ const UserPortal = () => {
                     >
                         Cart
                     </button>
-                    <button className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600">
+                    {/* <button className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600">
                         Guest List
                     </button>
                     <button className="px-4 py-2 bg-yellow-500 text-white rounded-md shadow-md hover:bg-yellow-600">
                         Order Status
-                    </button>
-                    <button className="px-4 py-2 bg-red-500 text-white rounded-md shadow-md hover:bg-red-600">
+                    </button> */}
+                    <button
+                        className="px-4 py-2 bg-red-500 text-white rounded-md shadow-md hover:bg-red-600"
+                        onClick={() => {
+                            localStorage.removeItem("user");
+                            navigate("/");
+                        }}
+                    >
                         Log Out
                     </button>
                 </div>

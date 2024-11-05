@@ -35,16 +35,16 @@ const UserLogin = () => {
                 <div className="flex justify-between mb-4">
                     <button
                         className="px-4 py-2 bg-blue-500 text-white rounded-md"
-                        onClick={() => console.log("Chart button clicked")}
+                        onClick={() => navigate("/")}
                     >
-                        Chart
+                        Home
                     </button>
-                    <button
+                    {/* <button
                         className="px-4 py-2 bg-red-500 text-white rounded-md"
                         onClick={handleBack}
                     >
                         Back
-                    </button>
+                    </button> */}
                 </div>
                 <h1 className="mx-auto text-xl font-bold">User Login</h1>
                 <form className="flex flex-col gap-4">

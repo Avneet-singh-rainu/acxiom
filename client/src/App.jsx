@@ -13,6 +13,7 @@ import AdminHome from "./pages/admin/Home";
 import AdminSignup from "./Auth/Admin/AdminSignup";
 import AdminMaintainUser from "./Auth/Admin/AdminMaintainUser";
 import AdminMaintainVendor from "./Auth/Admin/AdminMaintainVendor";
+import VendorSignup from "./Auth/Vendor/VendorSignup";
 
 function App() {
     return (
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/user/cart" element={<UserCart />} />
 
                     <Route path="/vendor/login" element={<VendorLogin />} />
+                    <Route path="/vendor/signup" element={<VendorSignup />} />
                     <Route path="/vendor/home" element={<VendorHome />} />
                     <Route path="/youritems" element={<YourItems />} />
                     <Route path="/addnewitem" element={<AddNewItem />} />

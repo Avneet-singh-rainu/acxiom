@@ -51,10 +51,12 @@ router.get("/users", async (req, res) => {
 });
 
 // Delete a user
-router.delete("/:userId", async (req, res) => {
+router.delete("/users/:userId", async (req, res) => {
     try {
         const { userId } = req.params;
         const deletedUser = await User.findOneAndDelete({ userId });
+        console.log(deletedUser);
+        console.log(userId);
         if (!deletedUser) {
             return res.status(404).json({ message: "User not found" });
         }
