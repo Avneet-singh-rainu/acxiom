@@ -21,6 +21,7 @@ const VendorLogin = () => {
 
             if (response.status === 200) {
                 setVendorId(response.data.user._id);
+                localStorage.setItem("vendor", response.data.user._id);
                 navigate("/vendor/home", { state: { data: response.data } });
             }
         } catch (error) {

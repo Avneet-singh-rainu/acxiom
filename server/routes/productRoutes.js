@@ -4,7 +4,7 @@ const router = express.Router();
 
 // ADD PRODUCT--------------------------
 router.post("/add/:vid", async (req, res) => {
-    const { name, prize, image } = req.body;
+    const { name, prize, vendor } = req.body;
 
     console.log(req.body);
 
@@ -24,16 +24,16 @@ router.post("/add/:vid", async (req, res) => {
 
 // UPDATE PRODUCT-----------------------
 router.put("/update/:id", async (req, res) => {
-    const { name, price, image } = req.body;
+    const { name, price, vendor } = req.body;
 
     try {
-        if (!name || !price || !image) {
+        if (!name || !price || !vendor) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
-            { name, price, image },
+            { name, price, vendor },
             { new: true }
         );
 

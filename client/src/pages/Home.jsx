@@ -3,19 +3,31 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
-        <div className="flex justify-center items-center">
-            <div className="w-1/2 h-1/2 flex flex-col mt-24 gap-[100px] bg-gray-300 p-6">
-                <h1 className="mx-auto">Event Management System</h1>
-                <div className="flex gap-7 mx-auto">
-                    <div>
-                        <Link to="/admin/login">Admin</Link>
-                    </div>
-                    <div>
-                        <Link to="/user/login">User</Link>
-                    </div>
-                    <div>
-                        <Link to="/vendor/login">Vendor</Link>
-                    </div>
+        <div className="min-h-screen flex justify-center items-center bg-gray-100">
+            <div className="w-full max-w-md flex flex-col items-center gap-8 bg-white p-8 rounded-lg shadow-lg">
+                <h1 className="text-2xl font-bold text-blue-600">
+                    Event Management System
+                </h1>
+
+                <div className="flex flex-col w-full gap-4">
+                    <Link
+                        to="/admin/login"
+                        className="w-full text-center py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition"
+                    >
+                        Admin
+                    </Link>
+                    <Link
+                        to="/user/login"
+                        className="w-full text-center py-3 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition"
+                    >
+                        User
+                    </Link>
+                    <Link
+                        to="/vendor/login"
+                        className="w-full text-center py-3 bg-purple-500 text-white font-semibold rounded-lg shadow hover:bg-purple-600 transition"
+                    >
+                        Vendor
+                    </Link>
                 </div>
             </div>
         </div>

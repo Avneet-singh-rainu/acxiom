@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema(
     {
-        vendor: String,
-        product: String,
         userId: String,
-        password: String,
+        name: Number,
+        price: Number,
+        Quantity: Number,
     },
     { timestamps: true }
 );
 
-module.exports = mongoose.model("Vendor", schema);
+module.exports = mongoose.model("UserItems", schema);

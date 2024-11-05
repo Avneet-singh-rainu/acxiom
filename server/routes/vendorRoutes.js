@@ -54,4 +54,13 @@ router.get("/youritem/:id", async (req, res) => {
     res.status(200).json({ items: items });
 });
 
+//get vendor items/products
+
+router.get("/item/:vendor", async (req, res) => {
+    console.log(req.params.vendor);
+    const items = await Product.find({ vendor: req.params.vendor });
+    console.log("items...", items);
+    res.status(200).json({ items: items });
+});
+
 module.exports = router;

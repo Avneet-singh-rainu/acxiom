@@ -5,7 +5,8 @@ import { useLocation } from "react-router";
 const YourItems = () => {
     const location = useLocation();
     const [items, setItems] = useState([]);
-    const vendorId = location?.state?.data?._id;
+    const vendorId =
+        location?.state?.data?._id || localStorage.getItem("vendor");
 
     const fetchItems = async () => {
         try {
@@ -13,6 +14,17 @@ const YourItems = () => {
                 `http://localhost:5000/vendor/yourItem/${vendorId}`
             );
             setItems(resp.data.items);
+        } catch (error) {
+            console.error("Error fetching items:", error);
+        }
+    };
+    const handleDelete = async (item) => {
+        try {
+            const resp = await axios.delete(
+                `http://localhost:5000/product/delete/${item._id}`
+            );
+            console.log(resp);
+            await fetchItems();
         } catch (error) {
             console.error("Error fetching items:", error);
         }
@@ -33,9 +45,14 @@ const YourItems = () => {
                                 key={i}
                                 className="bg-white p-4 shadow rounded-md"
                             >
-                                <h2 className="font-bold text-lg">
-                                    {item.name}
-                                </h2>
+                                <div className="flex justify-between">
+                                    <h2 className="font-bold text-lg">
+                                        {item.name}
+                                    </h2>
+                                    <button onClick={() => handleDelete(item)}>
+                                        X
+                                    </button>
+                                </div>
                                 <p className="text-gray-700">
                                     Price: ${item.price}
                                 </p>

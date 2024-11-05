@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const vendorRoutes = require("./routes/vendorRoutes");
 const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoutes");
+const userItemsRoutes = require("./routes/userItems");
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
@@ -25,8 +28,11 @@ const connectDB = async () => {
 connectDB();
 
 // Routes
+app.use("/admin/", adminRoutes);
 app.use("/vendor/", vendorRoutes);
 app.use("/product/", productRoutes);
+app.use("/user/", userRoutes);
+app.use("/useritems/",userItemsRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

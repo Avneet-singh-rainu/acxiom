@@ -4,7 +4,7 @@ const schema = new mongoose.Schema(
     {
         name: String,
         price: String,
-        image: String,
+        vendor: String,
         vendorid: String,
     },
     { timestamps: true }

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const AddNewItem = () => {
     const [productName, setProductName] = useState("");
     const [productPrice, setProductPrice] = useState("");
-    const [productImage, setProductImage] = useState("");
+    const [vendor, setVendor] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -18,7 +18,7 @@ const AddNewItem = () => {
         const newItem = {
             name: productName,
             price: productPrice,
-            image: productImage,
+            vendor: vendor,
         };
 
         try {
@@ -75,9 +75,9 @@ const AddNewItem = () => {
                     />
                     <input
                         type="text"
-                        placeholder="Product Image URL"
-                        value={productImage}
-                        onChange={(e) => setProductImage(e.target.value)}
+                        placeholder="Vendor"
+                        value={vendor}
+                        onChange={(e) => setVendor(e.target.value)}
                         className="p-2 border border-gray-300 rounded-md"
                         required
                     />
